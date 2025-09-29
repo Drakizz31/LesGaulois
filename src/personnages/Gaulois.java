@@ -4,6 +4,7 @@ public class Gaulois {
 	private String nom;
 	private int force;
 	private int effetPotion = 1;
+	private int boirePotion;
 
 	public Gaulois(String nom, int force) {
 		this.nom = nom;
