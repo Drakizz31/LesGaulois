@@ -23,7 +23,7 @@ public class Gaulois {
 	}
 
 	public void frapper(Romain romain) {
-		System.out.println(nom + " envoie un gran coupà dans la machoire de " + romain.getNom());
+		System.out.println(nom + " envoie un gran coup dans la machoire de " + romain.getNom());
 		romain.recevoirCoup(force / 3);
 	}
 	@Override
@@ -32,7 +32,8 @@ public class Gaulois {
 	}
 
 	public static void main(String[] args) {
-	    
+		Gaulois asterix = new Gaulois("Astérix", 8);
+		System.out.println(asterix);
 	}
 
 }
