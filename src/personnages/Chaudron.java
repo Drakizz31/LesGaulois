@@ -17,11 +17,16 @@ public class Chaudron {
 		return quantitePotion;
 	}
 
-
 	public int getForcePotion() {
 		return forcePotion;
 	}
-
 	
+	public int contenuPotion() {
+		return forcePotion;
+	}
+	public void boirePotion() {
+		quantitePotion--;
+		forcePotion = 0;
+	}
 	
 }
