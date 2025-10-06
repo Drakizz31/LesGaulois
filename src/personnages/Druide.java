@@ -4,7 +4,6 @@ public class Druide {
 	private String nom;
 	private int effetPotionMin;
 	private int effetPotionMax;
-	// Ajout d'un chaudron pour que le druide puisse interagir avec lui
 	private Chaudron chaudron;
 
 	public Druide(String nom, int effetPotionMin, int effetPotionMax) {
@@ -13,7 +12,6 @@ public class Druide {
 		this.effetPotionMax = effetPotionMax;
 	}
 
-	// Pour que le Druide puisse utiliser le chaudron qu'il a fabriqué
 	public void setChaudron(Chaudron chaudron) {
 		this.chaudron = chaudron;
 	}
