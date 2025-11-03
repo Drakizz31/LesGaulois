@@ -1,10 +1,16 @@
 package personnages;
 
+import histoire.Musee;
+import objets.Equipement;
+
 public class Gaulois {
 	private String nom;
-	private int force;
+//	private int force;
 	private int effetPotion = 1;
 	private Village village;
+	private int force;
+	private int nb_trophees;
+	private Equipement[] trophees = new Equipement[100];
 
 	public Gaulois(String nom, int force) {
 		this(nom, force, null);
@@ -25,24 +31,36 @@ public class Gaulois {
 	}
 
 	private String prendreParole() {
-		if (village != null && this.equals(village.getChef())) {
-			return "Le chef " + nom + " du village " + village.getNom() + " : ";
-		} else if (village != null) {
-			return "Le gaulois " + nom + " du village " + village.getNom() + " : ";
-		}
 		return "Le gaulois " + nom + " : ";
 	}
+
+//	private String prendreParole() {
+//		if (village != null && this.equals(village.getChef())) {
+//			return "Le chef " + nom + " du village " + village.getNom() + " : ";
+//		} else if (village != null) {
+//			return "Le gaulois " + nom + " du village " + village.getNom() + " : ";
+//		}
+//		return "Le gaulois " + nom + " : ";
+//	}
 
 	public void setEffetPotion(int effetPotion) {
 		this.effetPotion = effetPotion;
 	}
 
+//	public void frapper(Romain romain) {
+//		System.out.println(nom + " envoie un grand coup dans la mâchoire de " + romain.getNom());
+//		romain.recevoirCoup((force * effetPotion) / 3);
+//
+//		if (effetPotion > 1) {
+//			effetPotion--;
+//		}
+//	}
+
 	public void frapper(Romain romain) {
 		System.out.println(nom + " envoie un grand coup dans la mâchoire de " + romain.getNom());
-		romain.recevoirCoup((force * effetPotion) / 3);
-
-		if (effetPotion > 1) {
-			effetPotion--;
+		Equipement[] trophees = romain.recevoirCoup((force / 3) * effetPotion);
+		for (int i = 0; trophees != null && i < trophees.length; i++, nb_trophees++) {
+			this.trophees[nb_trophees] = trophees[i];
 		}
 	}
 
@@ -71,6 +89,25 @@ public class Gaulois {
 
 		System.out.println("Le Gaulois " + nom + " : «" + message + "»");
 	}
+
+	
+	
+	public void faireUneDonnation(Musee musee) {
+	    if (nb_trophees == 0) {
+	        
+	        System.out.println(prendreParole() + "Je n'ai aucun trophée à donner.");
+	    } else {
+	       
+	        System.out.println(prendreParole() + "« Je donne au musée tous mes trophées :");
+	        for (int i = 0; i < nb_trophees; i++) {
+	            System.out.println("- " + trophees[i].getNom()); 
+	            musee.donnerTrophees(this, trophees[i]); 
+	        }
+	        
+	        System.out.println("»");
+	    }
+	}
+
 
 	public static void main(String[] args) {
 		Gaulois asterix = new Gaulois("Astérix", 8);

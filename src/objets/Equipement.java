@@ -28,4 +28,8 @@ public enum Equipement {
         System.out.println(Equipement.CASQUE.nom);
         System.out.println(Equipement.BOUCLIER.nom);
     }
+
+	public String getNom() {
+		return nom;
+	}
 }
